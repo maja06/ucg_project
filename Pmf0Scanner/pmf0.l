@@ -3,6 +3,8 @@
 #include "tokens.h" 
 %}
 
+%option yylineno
+
 %%
 
 "IF"        { printf("Token: IF\n"); return T_IF; }
@@ -38,6 +40,12 @@
 [0-9]+\.[0-9]*([eE][+-]?[0-9]+)?     { printf("Double: %s\n", yytext); return DOUBLE; }
 [0-9]+[eE][+-]?[0-9]+ {
     fprintf(stderr, "Error: Nevalidan double format: %s\n", yytext);
+    return ERROR;
+}
+
+\"(\\[^\n]|[^"\n\\])*\"    { printf("String: %s\n", yytext); return STRING; }
+\"([^"\n\\]|\\[^\n])* {
+    fprintf(stderr, "Error: Nevalidan string format na liniji %d: %s\n", yylineno, yytext);
     return ERROR;
 }
 

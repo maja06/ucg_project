@@ -1,1 +1,2 @@
-12.E2 
+"Nevalidan string format jer ima novi red,
+zapravo dva."
