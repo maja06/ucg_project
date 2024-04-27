@@ -32,6 +32,15 @@
 "true"      { printf("Token: true\n"); return TRUE; }
 "false"     { printf("Token: false\n"); return FALSE; }
 
+[0-9]+                               { printf("Decimalni broj: %s\n", yytext); return DECIMAL; }
+0[xX][0-9a-fA-F]+                    { printf("Heksadecimalni broj: %s\n", yytext); return HEXADECIMAL; }
+
+[0-9]+\.[0-9]*([eE][+-]?[0-9]+)?     { printf("Double: %s\n", yytext); return DOUBLE; }
+[0-9]+[eE][+-]?[0-9]+ {
+    fprintf(stderr, "Error: Nevalidan double format: %s\n", yytext);
+    return ERROR;
+}
+
 "+"         { printf("Token: PLUS\n"); return PLUS; }
 "-"         { printf("Token: MINUS\n"); return MINUS; }
 "*"         { printf("Token: ASTERISK\n"); return ASTERISK; }
