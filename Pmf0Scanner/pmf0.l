@@ -38,6 +38,14 @@
 "\/\/".*$        { /* Jednolinijski komentar */ }
 \/\*([^*]|(\*+[^*/]))*\*+\/    { /* Višelinijski komentar */ }
 
+[a-zA-Z][a-zA-Z0-9_]{0,30} {
+    if (strlen(yytext) > 31) {
+        fprintf(stderr, "Identifajer je predug: %s\n", yytext);
+        return ERROR;
+    }
+
+    printf("Identifajer: %s\n", yytext); return IDENTIFIER;
+}
 
 [0-9]+                               { printf("Decimalni broj: %s\n", yytext); return DECIMAL; }
 0[xX][0-9a-fA-F]+                    { printf("Heksadecimalni broj: %s\n", yytext); return HEXADECIMAL; }
