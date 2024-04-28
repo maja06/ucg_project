@@ -18,6 +18,7 @@
 "DEFAULT"   { printf("Token: DEFAULT\n"); return T_DEFAULT; }
 "BREAK"     { printf("Token: BREAK\n"); return T_BREAK; }
 "CONTINUE"  { printf("Token: CONTINUE\n"); return T_CONTINUE; }
+"THIS"      { printf("Token: THIS\n"); return T_THIS; }
 
 "INT"       { printf("Token: INT\n"); return T_INT; }
 "DOUBLE"    { printf("Token: DOUBLE\n"); return T_DOUBLE; }
@@ -33,6 +34,10 @@
 
 "true"      { printf("Token: true\n"); return TRUE; }
 "false"     { printf("Token: false\n"); return FALSE; }
+
+"\/\/".*$        { /* Jednolinijski komentar */ }
+\/\*([^*]|(\*+[^*/]))*\*+\/    { /* Višelinijski komentar */ }
+
 
 [0-9]+                               { printf("Decimalni broj: %s\n", yytext); return DECIMAL; }
 0[xX][0-9a-fA-F]+                    { printf("Heksadecimalni broj: %s\n", yytext); return HEXADECIMAL; }

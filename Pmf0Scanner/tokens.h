@@ -13,6 +13,7 @@ enum yytokentype {
     T_DEFAULT,
     T_BREAK,
     T_CONTINUE,
+    T_THIS,
     T_INT,
     T_DOUBLE,
     T_CHAR,
