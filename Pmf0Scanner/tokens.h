@@ -1,8 +1,17 @@
-#ifndef YYTOKENTYPE
-#define YYTOKENTYPE
+#ifndef TOKENS_H
+#define TOKENS_H
 
-enum yytokentype {
-    T_IF = 256,  // Početi od 256 jer su vrijednosti 0-255 rezervirane za ASCII znakove
+typedef enum {
+    T_LET = 256,  // Počnite s vrijednošću koja ne kolidira s ASCII vrijednostima
+    T_IN,
+    T_END,
+    T_THEN,
+    T_FI,
+    T_DO,
+    T_READ,
+    T_WRITE,
+    T_IF,
+    T_ELSE,
     T_WHILE,
     T_RETURN,
     T_FOR,
@@ -26,10 +35,11 @@ enum yytokentype {
     T_TRUE,
     T_FALSE,
     T_IDENTIFIER,
-    T_DECIMAL,
-    T_HEXADECIMAL,
+    T_DECIMAL_LITERAL,
+    T_HEXADECIMAL_LITERAL,
     T_DOUBLE_LITERAL,
     T_STRING_LITERAL,
+    T_BOOL_LITERAL,
     T_PLUS,
     T_MINUS,
     T_ASTERISK,
@@ -53,7 +63,7 @@ enum yytokentype {
     T_RPAREN,
     T_ERROR,
     T_UNKNOWN
-};
+} Token;
 
-#endif /* YYTOKENTYPE */ 
+#endif // TOKENS_H
 

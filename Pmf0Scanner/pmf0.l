@@ -6,7 +6,14 @@
 %option yylineno
 
 %%
-
+"let"       { printf("Token: LET\n"); return T_LET; }
+"in"        { printf("Token: IN\n"); return T_IN; }
+"end"       { printf("Token: END\n"); return T_END; }
+"then"      { printf("Token: THEN\n"); return T_THEN; }
+"fi"        { printf("Token: FI\n"); return T_FI; }
+"do"        { printf("Token: DO\n"); return T_DO; }
+"read"      { printf("Token: READ\n"); return T_READ; }
+"write"     { printf("Token: WRITE\n"); return T_WRITE; }
 "if"        { printf("Token: IF\n"); return T_IF; }
 "else"      { printf("Token: ELSE\n"); return T_ELSE; }
 "while"     { printf("Token: WHILE\n"); return T_WHILE; }
@@ -32,23 +39,13 @@
 "or"        { printf("Token: OR\n"); return T_OR; }
 "not"       { printf("Token: NOT\n"); return T_NOT; }
 
-"true"      { printf("Token: true\n"); return T_TRUE; }
-"false"     { printf("Token: false\n"); return T_FALSE; }
+"true"|"false"    { return T_BOOL_LITERAL; }
 
 "\/\/".*$        { /* Jednolinijski komentar */ }
 \/\*([^*]|(\*+[^*/]))*\*+\/    { /* Višelinijski komentar */ }
 
-[a-zA-Z][a-zA-Z0-9_]{0,30} {
-    if (strlen(yytext) > 31) {
-        fprintf(stderr, "Identifikator je predug: %s\n", yytext);
-        return T_ERROR;
-    }
-
-    printf("Identifikator: %s\n", yytext); return T_IDENTIFIER;
-}
-
-[0-9]+                               { printf("Decimalni broj: %s\n", yytext); return T_DECIMAL; }
-0[xX][0-9a-fA-F]+                    { printf("Heksadecimalni broj: %s\n", yytext); return T_HEXADECIMAL; }
+[0-9]+                               { printf("Decimalni broj: %s\n", yytext); return T_DECIMAL_LITERAL; }
+0[xX][0-9a-fA-F]+                    { printf("Heksadecimalni broj: %s\n", yytext); return T_HEXADECIMAL_LITERAL; }
 
 [0-9]+\.[0-9]*([eE][+-]?[0-9]+)?     { printf("Double: %s\n", yytext); return T_DOUBLE_LITERAL; }
 [0-9]+[eE][+-]?[0-9]+ {
@@ -84,6 +81,15 @@
 "("         { printf("Token: LPAREN\n"); return T_LPAREN; }
 ")"         { printf("Token: RPAREN\n"); return T_RPAREN; }
 
+[a-zA-Z][a-zA-Z0-9_]{31,} {
+    fprintf(stderr, "Identifikator je predug: %s\n", yytext);
+    return T_ERROR;
+}
+
+[a-zA-Z][a-zA-Z0-9_]{1,30} {
+    printf("Identifikator: %s\n", yytext);
+    return T_IDENTIFIER;
+}
 
 [ \t\n]+    { /* Ignorisati sve praznine */ }
 .           { return yytext[0]; }
