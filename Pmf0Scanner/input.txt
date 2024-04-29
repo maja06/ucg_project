@@ -1,10 +1,4 @@
-/* Test test
-dsds
-sad
-dsdd
-aa
-aa
-*/
+if(x==3)
 
 
 
