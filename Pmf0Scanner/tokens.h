@@ -2,7 +2,7 @@
 #define TOKENS_H
 
 typedef enum {
-    T_LET = 256,  // Počnite s vrijednošću koja ne kolidira s ASCII vrijednostima
+    T_LET = 256,  
     T_IN,
     T_END,
     T_THEN,
@@ -22,6 +22,7 @@ typedef enum {
     T_BREAK,
     T_CONTINUE,
     T_THIS,
+    T_SKIP,
     T_INT,
     T_DOUBLE,
     T_CHAR,

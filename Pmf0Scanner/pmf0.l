@@ -26,6 +26,7 @@
 "break"     { printf("Token: BREAK\n"); return T_BREAK; }
 "continue"  { printf("Token: CONTINUE\n"); return T_CONTINUE; }
 "this"      { printf("Token: THIS\n"); return T_THIS; }
+"skip"      { printf("Token: SKIP\n"); return T_SKIP; }
 
 "int"       { printf("Token: INT\n"); return T_INT; }
 "double"    { printf("Token: DOUBLE\n"); return T_DOUBLE; }
