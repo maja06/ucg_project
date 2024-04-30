@@ -613,10 +613,11 @@ int yy_flex_debug = 0;
 char *yytext;
 #line 1 "pmf0.l"
 #line 2 "pmf0.l"
+#include <stdbool.h>
 #include <stdio.h>
-#include "tokens.h" 
-#line 619 "lex.yy.c"
+#include "tokens.h"
 #line 620 "lex.yy.c"
+#line 621 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -833,9 +834,9 @@ YY_DECL
 		}
 
 	{
-#line 8 "pmf0.l"
+#line 9 "pmf0.l"
 
-#line 839 "lex.yy.c"
+#line 840 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -904,162 +905,162 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 9 "pmf0.l"
-{ printf("Token: LET\n"); return T_LET; }
+#line 10 "pmf0.l"
+{ return T_LET; }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 10 "pmf0.l"
-{ printf("Token: IN\n"); return T_IN; }
+#line 11 "pmf0.l"
+{ return T_IN; }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 11 "pmf0.l"
-{ printf("Token: END\n"); return T_END; }
+#line 12 "pmf0.l"
+{ return T_END; }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 12 "pmf0.l"
-{ printf("Token: THEN\n"); return T_THEN; }
+#line 13 "pmf0.l"
+{ return T_THEN; }
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 13 "pmf0.l"
-{ printf("Token: FI\n"); return T_FI; }
+#line 14 "pmf0.l"
+{ return T_FI; }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 14 "pmf0.l"
-{ printf("Token: DO\n"); return T_DO; }
+#line 15 "pmf0.l"
+{ return T_DO; }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 15 "pmf0.l"
-{ printf("Token: READ\n"); return T_READ; }
+#line 16 "pmf0.l"
+{ return T_READ; }
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 16 "pmf0.l"
-{ printf("Token: WRITE\n"); return T_WRITE; }
+#line 17 "pmf0.l"
+{ return T_WRITE; }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 17 "pmf0.l"
-{ printf("Token: IF\n"); return T_IF; }
+#line 18 "pmf0.l"
+{ return T_IF; }
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 18 "pmf0.l"
-{ printf("Token: ELSE\n"); return T_ELSE; }
+#line 19 "pmf0.l"
+{ return T_ELSE; }
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 19 "pmf0.l"
-{ printf("Token: WHILE\n"); return T_WHILE; }
+#line 20 "pmf0.l"
+{ return T_WHILE; }
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 20 "pmf0.l"
-{ printf("Token: RETURN\n"); return T_RETURN; }
+#line 21 "pmf0.l"
+{ return T_RETURN; }
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 21 "pmf0.l"
-{ printf("Token: FOR\n"); return T_FOR; }
+#line 22 "pmf0.l"
+{ return T_FOR; }
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 22 "pmf0.l"
-{ printf("Token: FOREACH\n"); return T_FOREACH; }
+#line 23 "pmf0.l"
+{ return T_FOREACH; }
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 23 "pmf0.l"
-{ printf("Token: SWITCH\n"); return T_SWITCH; }
+#line 24 "pmf0.l"
+{ return T_SWITCH; }
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 24 "pmf0.l"
-{ printf("Token: CASE\n"); return T_CASE; }
+#line 25 "pmf0.l"
+{ return T_CASE; }
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 25 "pmf0.l"
-{ printf("Token: DEFAULT\n"); return T_DEFAULT; }
+#line 26 "pmf0.l"
+{ return T_DEFAULT; }
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 26 "pmf0.l"
-{ printf("Token: BREAK\n"); return T_BREAK; }
+#line 27 "pmf0.l"
+{ return T_BREAK; }
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 27 "pmf0.l"
-{ printf("Token: CONTINUE\n"); return T_CONTINUE; }
+#line 28 "pmf0.l"
+{ return T_CONTINUE; }
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 28 "pmf0.l"
-{ printf("Token: THIS\n"); return T_THIS; }
+#line 29 "pmf0.l"
+{ return T_THIS; }
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 29 "pmf0.l"
-{ printf("Token: SKIP\n"); return T_SKIP; }
+#line 30 "pmf0.l"
+{ return T_SKIP; }
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 31 "pmf0.l"
-{ printf("Token: INT\n"); return T_INT; }
+#line 32 "pmf0.l"
+{ return T_INT; }
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 32 "pmf0.l"
-{ printf("Token: DOUBLE\n"); return T_DOUBLE; }
+#line 33 "pmf0.l"
+{ return T_DOUBLE; }
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 33 "pmf0.l"
-{ printf("Token: CHAR\n"); return T_CHAR; }
+#line 34 "pmf0.l"
+{ return T_CHAR; }
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 34 "pmf0.l"
-{ printf("Token: STRING\n"); return T_STRING; }
+#line 35 "pmf0.l"
+{ return T_STRING; }
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 35 "pmf0.l"
-{ printf("Token: BOOL\n"); return T_BOOL; }
+#line 36 "pmf0.l"
+{ return T_BOOL; }
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 36 "pmf0.l"
-{ printf("Token: VOID\n"); return T_VOID; }
+#line 37 "pmf0.l"
+{ return T_VOID; }
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 37 "pmf0.l"
-{ printf("Token: ENUM\n"); return T_ENUM; }
+#line 38 "pmf0.l"
+{ return T_ENUM; }
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 39 "pmf0.l"
-{ printf("Token: AND\n"); return T_AND; }
+#line 40 "pmf0.l"
+{ return T_AND; }
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 40 "pmf0.l"
-{ printf("Token: OR\n"); return T_OR; }
+#line 41 "pmf0.l"
+{ return T_OR; }
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 41 "pmf0.l"
-{ printf("Token: NOT\n"); return T_NOT; }
+#line 42 "pmf0.l"
+{ return T_NOT; }
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 43 "pmf0.l"
+#line 44 "pmf0.l"
 { return T_BOOL_LITERAL; }
 	YY_BREAK
 case 33:
@@ -1067,33 +1068,33 @@ case 33:
 (yy_c_buf_p) = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 45 "pmf0.l"
-{ /* Jednolinijski komentar */ }
+#line 46 "pmf0.l"
+{  }
 	YY_BREAK
 case 34:
 /* rule 34 can match eol */
 YY_RULE_SETUP
-#line 46 "pmf0.l"
-{ /* Višelinijski komentar */ }
+#line 47 "pmf0.l"
+{ }
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 48 "pmf0.l"
+#line 49 "pmf0.l"
 { printf("Decimalni broj: %s\n", yytext); return T_DECIMAL_LITERAL; }
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 49 "pmf0.l"
+#line 50 "pmf0.l"
 { printf("Heksadecimalni broj: %s\n", yytext); return T_HEXADECIMAL_LITERAL; }
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 51 "pmf0.l"
+#line 52 "pmf0.l"
 { printf("Double: %s\n", yytext); return T_DOUBLE_LITERAL; }
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 52 "pmf0.l"
+#line 53 "pmf0.l"
 {
     fprintf(stderr, "Error: Nevalidan double format: %s\n", yytext);
     return T_ERROR;
@@ -1101,12 +1102,12 @@ YY_RULE_SETUP
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 57 "pmf0.l"
+#line 58 "pmf0.l"
 { printf("String: %s\n", yytext); return T_STRING_LITERAL; }
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 58 "pmf0.l"
+#line 59 "pmf0.l"
 {
     fprintf(stderr, "Error: Nevalidan string format na liniji %d: %s\n", yylineno, yytext);
     return T_ERROR;
@@ -1114,112 +1115,112 @@ YY_RULE_SETUP
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
-#line 63 "pmf0.l"
-{ printf("Token: PLUS\n"); return T_PLUS; }
+#line 64 "pmf0.l"
+{ return T_PLUS; }
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
-#line 64 "pmf0.l"
-{ printf("Token: MINUS\n"); return T_MINUS; }
+#line 65 "pmf0.l"
+{ return T_MINUS; }
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
-#line 65 "pmf0.l"
-{ printf("Token: ASTERISK\n"); return T_ASTERISK; }
+#line 66 "pmf0.l"
+{ return T_ASTERISK; }
 	YY_BREAK
 case 44:
 YY_RULE_SETUP
-#line 66 "pmf0.l"
-{ printf("Token: SLASH\n"); return T_SLASH; }
+#line 67 "pmf0.l"
+{ return T_SLASH; }
 	YY_BREAK
 case 45:
 YY_RULE_SETUP
-#line 67 "pmf0.l"
-{ printf("Token: PERCENT\n"); return T_PERCENT; }
+#line 68 "pmf0.l"
+{ return T_PERCENT; }
 	YY_BREAK
 case 46:
 YY_RULE_SETUP
-#line 68 "pmf0.l"
-{ printf("Token: BACKSLASH\n"); return T_BACKSLASH; }
+#line 69 "pmf0.l"
+{ return T_BACKSLASH; }
 	YY_BREAK
 case 47:
 YY_RULE_SETUP
-#line 69 "pmf0.l"
-{ printf("Token: LESS\n"); return T_LESS; }
+#line 70 "pmf0.l"
+{ return T_LESS; }
 	YY_BREAK
 case 48:
 YY_RULE_SETUP
-#line 70 "pmf0.l"
-{ printf("Token: LESS_EQ\n"); return T_LESS_EQ; }
+#line 71 "pmf0.l"
+{ return T_LESS_EQ; }
 	YY_BREAK
 case 49:
 YY_RULE_SETUP
-#line 71 "pmf0.l"
-{ printf("Token: GREATER\n"); return T_GREATER; }
+#line 72 "pmf0.l"
+{ return T_GREATER; }
 	YY_BREAK
 case 50:
 YY_RULE_SETUP
-#line 72 "pmf0.l"
-{ printf("Token: GREATER_EQ\n"); return T_GREATER_EQ; }
+#line 73 "pmf0.l"
+{ return T_GREATER_EQ; }
 	YY_BREAK
 case 51:
 YY_RULE_SETUP
-#line 73 "pmf0.l"
-{ printf("Token: ASSIGN\n"); return T_ASSIGN; }
+#line 74 "pmf0.l"
+{ return T_ASSIGN; }
 	YY_BREAK
 case 52:
 YY_RULE_SETUP
-#line 74 "pmf0.l"
-{ printf("Token: EQUAL\n"); return T_EQUAL; }
+#line 75 "pmf0.l"
+{ return T_EQUAL; }
 	YY_BREAK
 case 53:
 YY_RULE_SETUP
-#line 75 "pmf0.l"
-{ printf("Token: NOT_EQUAL\n"); return T_NOT_EQUAL; }
+#line 76 "pmf0.l"
+{ return T_NOT_EQUAL; }
 	YY_BREAK
 case 54:
 YY_RULE_SETUP
-#line 76 "pmf0.l"
-{ printf("Token: AND\n"); return T_AND; }
+#line 77 "pmf0.l"
+{ return T_AND; }
 	YY_BREAK
 case 55:
 YY_RULE_SETUP
-#line 77 "pmf0.l"
-{ printf("Token: OR\n"); return T_OR; }
+#line 78 "pmf0.l"
+{ return T_OR; }
 	YY_BREAK
 case 56:
 YY_RULE_SETUP
-#line 78 "pmf0.l"
-{ printf("Token: NOT\n"); return T_NOT; }
+#line 79 "pmf0.l"
+{ return T_NOT; }
 	YY_BREAK
 case 57:
 YY_RULE_SETUP
-#line 79 "pmf0.l"
-{ printf("Token: SEMICOLON\n"); return T_SEMICOLON; }
+#line 80 "pmf0.l"
+{ return T_SEMICOLON; }
 	YY_BREAK
 case 58:
 YY_RULE_SETUP
-#line 80 "pmf0.l"
-{ printf("Token: COMMA\n"); return T_COMMA; }
+#line 81 "pmf0.l"
+{ return T_COMMA; }
 	YY_BREAK
 case 59:
 YY_RULE_SETUP
-#line 81 "pmf0.l"
-{ printf("Token: DOT\n"); return T_DOT; }
+#line 82 "pmf0.l"
+{ return T_DOT; }
 	YY_BREAK
 case 60:
 YY_RULE_SETUP
-#line 82 "pmf0.l"
-{ printf("Token: LPAREN\n"); return T_LPAREN; }
+#line 83 "pmf0.l"
+{ return T_LPAREN; }
 	YY_BREAK
 case 61:
 YY_RULE_SETUP
-#line 83 "pmf0.l"
-{ printf("Token: RPAREN\n"); return T_RPAREN; }
+#line 84 "pmf0.l"
+{ return T_RPAREN; }
 	YY_BREAK
 case 62:
 YY_RULE_SETUP
-#line 85 "pmf0.l"
+#line 86 "pmf0.l"
 {
     fprintf(stderr, "Identifikator je predug: %s\n", yytext);
     return T_ERROR;
@@ -1227,7 +1228,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 63:
 YY_RULE_SETUP
-#line 90 "pmf0.l"
+#line 91 "pmf0.l"
 {
     printf("Identifikator: %s\n", yytext);
     return T_IDENTIFIER;
@@ -1236,20 +1237,20 @@ YY_RULE_SETUP
 case 64:
 /* rule 64 can match eol */
 YY_RULE_SETUP
-#line 95 "pmf0.l"
-{ /* Ignorisati sve praznine */ }
+#line 96 "pmf0.l"
+{  }
 	YY_BREAK
 case 65:
 YY_RULE_SETUP
-#line 96 "pmf0.l"
+#line 97 "pmf0.l"
 { return yytext[0]; }
 	YY_BREAK
 case 66:
 YY_RULE_SETUP
-#line 98 "pmf0.l"
+#line 99 "pmf0.l"
 ECHO;
 	YY_BREAK
-#line 1253 "lex.yy.c"
+#line 1254 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -2266,7 +2267,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 98 "pmf0.l"
+#line 99 "pmf0.l"
 
 
  

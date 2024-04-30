@@ -1,2 +1,5 @@
-dafdadaffffffffffffffffffffffffffffffffffffffffffffffffffff
-
+let
+int x;
+in
+x = 5;
+end
