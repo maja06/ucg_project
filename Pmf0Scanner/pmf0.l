@@ -1,7 +1,7 @@
 %{
 #include <stdbool.h>
 #include <stdio.h>
-#include "tokens.h"
+#include "pmf0.tab.h" 
 %}
 
 %option yylineno

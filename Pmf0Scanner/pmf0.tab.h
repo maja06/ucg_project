@@ -58,41 +58,41 @@ extern int yydebug;
     T_HEXADECIMAL_LITERAL = 259,   /* T_HEXADECIMAL_LITERAL  */
     T_DOUBLE_LITERAL = 260,        /* T_DOUBLE_LITERAL  */
     T_STRING_LITERAL = 261,        /* T_STRING_LITERAL  */
-    T_IDENTIFIER = 262,            /* T_IDENTIFIER  */
-    T_BOOL_LITERAL = 263,          /* T_BOOL_LITERAL  */
-    T_LET = 264,                   /* T_LET  */
-    T_IN = 265,                    /* T_IN  */
-    T_END = 266,                   /* T_END  */
-    T_THEN = 267,                  /* T_THEN  */
-    T_FI = 268,                    /* T_FI  */
-    T_DO = 269,                    /* T_DO  */
-    T_READ = 270,                  /* T_READ  */
-    T_WRITE = 271,                 /* T_WRITE  */
-    T_IF = 272,                    /* T_IF  */
-    T_ELSE = 273,                  /* T_ELSE  */
-    T_WHILE = 274,                 /* T_WHILE  */
-    T_RETURN = 275,                /* T_RETURN  */
-    T_FOR = 276,                   /* T_FOR  */
-    T_FOREACH = 277,               /* T_FOREACH  */
-    T_SWITCH = 278,                /* T_SWITCH  */
-    T_CASE = 279,                  /* T_CASE  */
-    T_DEFAULT = 280,               /* T_DEFAULT  */
-    T_BREAK = 281,                 /* T_BREAK  */
-    T_CONTINUE = 282,              /* T_CONTINUE  */
-    T_THIS = 283,                  /* T_THIS  */
-    T_SKIP = 284,                  /* T_SKIP  */
-    T_INT = 285,                   /* T_INT  */
-    T_DOUBLE = 286,                /* T_DOUBLE  */
-    T_CHAR = 287,                  /* T_CHAR  */
-    T_STRING = 288,                /* T_STRING  */
-    T_BOOL = 289,                  /* T_BOOL  */
-    T_VOID = 290,                  /* T_VOID  */
-    T_ENUM = 291,                  /* T_ENUM  */
-    T_AND = 292,                   /* T_AND  */
-    T_OR = 293,                    /* T_OR  */
-    T_NOT = 294,                   /* T_NOT  */
-    T_TRUE = 295,                  /* T_TRUE  */
-    T_FALSE = 296,                 /* T_FALSE  */
+    T_BOOL_LITERAL = 262,          /* T_BOOL_LITERAL  */
+    T_LET = 263,                   /* T_LET  */
+    T_IN = 264,                    /* T_IN  */
+    T_END = 265,                   /* T_END  */
+    T_THEN = 266,                  /* T_THEN  */
+    T_FI = 267,                    /* T_FI  */
+    T_DO = 268,                    /* T_DO  */
+    T_READ = 269,                  /* T_READ  */
+    T_WRITE = 270,                 /* T_WRITE  */
+    T_IF = 271,                    /* T_IF  */
+    T_ELSE = 272,                  /* T_ELSE  */
+    T_WHILE = 273,                 /* T_WHILE  */
+    T_RETURN = 274,                /* T_RETURN  */
+    T_FOR = 275,                   /* T_FOR  */
+    T_FOREACH = 276,               /* T_FOREACH  */
+    T_SWITCH = 277,                /* T_SWITCH  */
+    T_CASE = 278,                  /* T_CASE  */
+    T_DEFAULT = 279,               /* T_DEFAULT  */
+    T_BREAK = 280,                 /* T_BREAK  */
+    T_CONTINUE = 281,              /* T_CONTINUE  */
+    T_THIS = 282,                  /* T_THIS  */
+    T_SKIP = 283,                  /* T_SKIP  */
+    T_INT = 284,                   /* T_INT  */
+    T_DOUBLE = 285,                /* T_DOUBLE  */
+    T_CHAR = 286,                  /* T_CHAR  */
+    T_STRING = 287,                /* T_STRING  */
+    T_BOOL = 288,                  /* T_BOOL  */
+    T_VOID = 289,                  /* T_VOID  */
+    T_ENUM = 290,                  /* T_ENUM  */
+    T_AND = 291,                   /* T_AND  */
+    T_OR = 292,                    /* T_OR  */
+    T_NOT = 293,                   /* T_NOT  */
+    T_TRUE = 294,                  /* T_TRUE  */
+    T_FALSE = 295,                 /* T_FALSE  */
+    T_IDENTIFIER = 296,            /* T_IDENTIFIER  */
     T_PLUS = 297,                  /* T_PLUS  */
     T_MINUS = 298,                 /* T_MINUS  */
     T_ASTERISK = 299,              /* T_ASTERISK  */
@@ -121,12 +121,12 @@ extern int yydebug;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 11 "pmf0.y"
+#line 14 "pmf0.y"
 
     int val_int;
     double val_double;
-    bool val_bool;
-    char* val_string;
+    char *val_string;
+    int val_bool;
 
 #line 132 "pmf0.tab.h"
 
