@@ -1,67 +1,59 @@
 #ifndef TOKENS_H
 #define TOKENS_H
 
-typedef enum {
-    T_LET = 256,  
-    T_IN,
-    T_END,
-    T_THEN,
-    T_FI,
-    T_DO,
-    T_READ,
-    T_WRITE,
-    T_IF,
-    T_ELSE,
-    T_WHILE,
-    T_RETURN,
-    T_FOR,
-    T_FOREACH,
-    T_SWITCH,
-    T_CASE,
-    T_DEFAULT,
-    T_BREAK,
-    T_CONTINUE,
-    T_THIS,
-    T_SKIP,
-    T_INT,
-    T_DOUBLE,
-    T_CHAR,
-    T_STRING,
-    T_BOOL,
-    T_VOID,
-    T_ENUM,
-    T_AND,
-    T_OR,
-    T_NOT,
-    T_TRUE,
-    T_FALSE,
-    T_IDENTIFIER,
-    T_DECIMAL_LITERAL,
-    T_HEXADECIMAL_LITERAL,
-    T_DOUBLE_LITERAL,
-    T_STRING_LITERAL,
-    T_BOOL_LITERAL,
-    T_PLUS,
-    T_MINUS,
-    T_ASTERISK,
-    T_SLASH,
-    T_PERCENT,
-    T_BACKSLASH,
-    T_LESS,
-    T_LESS_EQ,
-    T_GREATER,
-    T_GREATER_EQ,
-    T_ASSIGN,
-    T_EQUAL,
-    T_NOT_EQUAL,
-    T_SEMICOLON,
-    T_COMMA,
-    T_DOT,
-    T_LPAREN,
-    T_RPAREN,
-    T_ERROR,
-    T_UNKNOWN
-} Token;
+#define T_Let 256
+#define T_In 257
+#define T_End 258
+#define T_Then 259
+#define T_Fi 260
+#define T_Do 261
+#define T_Read 262
+#define T_Write 263
+#define T_If 264
+#define T_Else 265
+#define T_While 266
+#define T_Return 267
+#define T_For 268
+#define T_Foreach 269
+#define T_Switch 270
+#define T_Case 271
+#define T_Default 272
+#define T_Break 273
+#define T_Continue 274
+#define T_This 275
+#define T_Int 276
+#define T_Double 277
+#define T_Char 278
+#define T_String 279
+#define T_Bool 280
+#define T_Void 281
+#define T_Enum 282
+#define T_And 283
+#define T_Or 284
+#define T_Not 285
+#define Int_Const 286
+#define T_Bool_Const 287
+#define T_Identifier 288
+#define T_Double_Const 289
+#define T_String_Const 290
+#define T_Plus 291
+#define T_Minus 292
+#define T_Asterisk 293
+#define T_Slash 294
+#define T_Percent 295
+#define T_Backslash 296
+#define T_Less 297
+#define T_Less_EQ 298
+#define T_Greater 299
+#define T_Greater_EQ 300
+#define T_Assign 301
+#define T_Equal 302
+#define T_Not_Equal 303
+#define T_Semicolon 304
+#define T_Comma 305
+#define T_Dot 306
+#define T_Lparen 307
+#define T_Rparen 308
+#define T_Error 309
 
 #endif // TOKENS_H
-

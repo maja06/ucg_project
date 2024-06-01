@@ -1,16 +1,19 @@
+%debug
 %{
 #include <stdbool.h>
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include "pmf0.tab.h" 
+#include <math.h>
+#include "pmf0.tab.h"
 
-
-extern int yylex();
 void yyerror(const char *s);
+extern int yylex();
 
+int yydebug = 1;
 %}
 
+%locations
 %union {
     int val_int;
     double val_double;
@@ -53,10 +56,10 @@ void yyerror(const char *s);
 program:
     T_LET declarations T_IN command_sequence T_END
   ;
-  
- declarations:
+
+declarations:
     /* Empty */
-  | declarations type ident_decl
+  | declarations type ident_decl T_SEMICOLON
   ;
 
 ident_decl:
@@ -64,7 +67,7 @@ ident_decl:
   | ident_decl T_COMMA identifier
   ;
 
- type:
+type:
     T_INT
   | T_DOUBLE
   | T_BOOL
@@ -73,7 +76,7 @@ ident_decl:
 
 identifier:
     T_IDENTIFIER
-;
+  ;
 
 command_sequence:
     command
@@ -83,8 +86,8 @@ command_sequence:
 command:
     T_SKIP T_SEMICOLON
   | identifier T_ASSIGN expression T_SEMICOLON
-  | T_IF expression T_THEN command_sequence T_ELSE command_sequence T_FI T_SEMICOLON
-  | T_WHILE expression T_DO command_sequence T_END T_SEMICOLON
+  | T_IF expression T_THEN command_sequence T_ELSE command_sequence T_FI
+  | T_WHILE expression T_DO command_sequence T_END
   | T_READ identifier T_SEMICOLON
   | T_WRITE expression T_SEMICOLON
   ;
@@ -119,15 +122,15 @@ double_expression:
   | double_expression T_ASTERISK double_expression { $$ = $1 * $3; }
   | double_expression T_SLASH double_expression   { $$ = $1 / $3; }
   | '(' double_expression ')'                     { $$ = $2; }
-  ;
+  ; 
 
 bool_expression:
     T_BOOL_LITERAL { $$ = $1; }
   | bool_expression T_AND bool_expression { $$ = $1 && $3; }
   | bool_expression T_OR bool_expression  { $$ = $1 || $3; }
-  | T_NOT bool_expression                 { $$ = !$2; }
-  | '(' bool_expression ')'               { $$ = $2; }
-  ;;
+  | T_NOT bool_expression { $$ = !$2; }
+  | '(' bool_expression ')' { $$ = $2; }
+  ;
 
 string_expression:
     T_STRING_LITERAL { $$ = strdup($1); }
@@ -137,16 +140,18 @@ string_expression:
 
 %%
 
-int main() {
-    int res = yyparse(); 
-    if (res == 0) {
-        printf("Ulaz je bio ispravan!\n");
-    } else {
-        printf("Ulaz nije bio ispravan!\n"); 
+int main(){
+    yydebug = 1; 
+    if(yyparse() == 0) {
+        printf("The program has successfully completed its work!\n");
     }
-    return 0; 
+    else {
+        printf("The program failed!\n");
+    }
+
+    return 0;
 }
 
-void yyerror(const char *s) {
-    fprintf(stderr, "Error: %s\n", s);
+void yyerror(const char* msg) {
+    fprintf(stderr, "Error: %s at position (%d, %d)\n", msg, yylloc.first_line, yylloc.first_column);
 }
