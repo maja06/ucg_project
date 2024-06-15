@@ -1,29 +1,18 @@
 let
-    int p, q, r;
-    //BOOL true;
-    double a, l; 
-    
+    int x, y, z;
+    string test;                
+    double a = 1.5;
 in
-    a = 10;
-    f = 5;
-    b = 2.5;
-    c = true;
-    d = "Test";
-    write a + 5;
-    write 2.5 / 2.0;
-  //  write a % f;
-    write a >= b;
-    if (!a != f) then x = 2; else x = 8; fi;
-    if (a && f) then x = 2; else x = 8; fi;
-    if (a <= f) then x = 2; else x = 8; fi;
-    if (a == f) then x = 2; else x = 8; fi;
+    x = 8;
+    y = 3;
+    z = x * y;
+    test = "hello, world!";   
+    read x;
+    write z * x;
+    x = z * y;
     while y < x
     do
         y = y + 30;
         y = x * y;
     end;
-    /*
-    if (a =error= f) then x = 2; else x := 8; fi;
-    */
-    write c;
 end
