@@ -67,7 +67,7 @@ int yycolumn = 1;
     return T_ERROR;
 }
 
-\"(\\[^\n]|[^"\n\\])*\"    { printf("TOKEN: T_STRING_LITERAL (%s)\n", yytext); yylval.val_string = strdup(yytext); return T_STRING_LITERAL; }
+\"(\\[^\n]|[^"\n\\])*\"    { printf("TOKEN: T_STRING_LITERAL (%s)\n", yytext); yylval.val_identifier = strdup(yytext); return T_STRING_LITERAL; }
 \"([^"\n\\]|\\[^\n])* {
     fprintf(stderr, "Error: Nevalidan string format na liniji %d: %s\n", yylineno, yytext);
     return T_ERROR;
@@ -102,12 +102,12 @@ int yycolumn = 1;
 
 [a-zA-Z][a-zA-Z0-9_]{0,30} {
     printf("TOKEN: T_IDENTIFIER (%s)\n", yytext);
-    yylval.val_string = strdup(yytext);
+    yylval.val_identifier = strdup(yytext);
     return T_IDENTIFIER;
 }
 
 [ \t]+      { yycolumn += yyleng; }  
-\n          { }
-.           { }
+\n          {}
+.           {}
 
 %%
