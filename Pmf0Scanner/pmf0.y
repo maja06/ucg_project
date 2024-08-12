@@ -127,7 +127,7 @@ command_sequence:
 ;
 
 block:
-      declarations command_sequence { $$ = 1; }  /* ili bilo koja druga vrednost */
+      declarations command_sequence { $$ = 1; }  
     | command_sequence { $$ = 1; }
 ;
 
