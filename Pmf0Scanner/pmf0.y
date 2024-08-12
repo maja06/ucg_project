@@ -246,7 +246,7 @@ void printSymbolTable() {
         if (strcmp(current->type, "int") == 0) {
             printf("%d", current->value.intValue);
         } else if (strcmp(current->type, "double") == 0) {
-            printf("%.1f", current->value.doubleValue); // Precizno formatiranje za double
+            printf("%.1f", current->value.doubleValue); 
         } else if (strcmp(current->type, "bool") == 0) {
             printf("%s", current->value.boolValue ? "true" : "false");
         } else if (strcmp(current->type, "string") == 0) {
