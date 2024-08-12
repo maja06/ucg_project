@@ -1,18 +1,30 @@
 let
-    int x, y, z;
-    string test;                
-    double a = 1.5;
+    int x;
+    int y;
+    bool z;
 in
-    x = 8;
-    y = 3;
-    z = x * y;
-    test = "hello, world!";   
-    read x;
-    write z * x;
-    x = z * y;
-    while y < x
-    do
-        y = y + 30;
-        y = x * y;
-    end;
+    x = 5;
+    y = 10;
+    z = true;
+
+    if (x < 10) then
+       int c;
+       write c;
+        if (y > 5) then
+            int a;
+            a = 15;
+            write a;
+        else
+            int b;
+            b = 20;
+            write b;
+        fi;
+        write x;
+    else
+    int d;
+    
+        write y;
+    fi;
+
+    write z;
 end
