@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
+#include <limits.h>
 #include "pmf0.tab.h"
 
 void yyerror(const char *s);  
@@ -27,12 +28,16 @@ typedef struct Symbol {
 
 Symbol *symbolTable = NULL;
 int currentScope = 0;
+int countInt = 0;
+
+int intVarCounter = 0;  
 
 Symbol *createSymbol(char *name, char *type, int scope);
-void insertSymbol(char *name, char *type, int scope);
+void insertSymbol(char *name, char *type, int scope, void *value);
 Symbol *findSymbol(char *name, int scope);
 void updateSymbolValue(char *name, int scope, void *value);
 void printSymbolTable();
+Symbol *findMaxInt();
 
 void increaseScope();
 void decreaseScope();
@@ -49,7 +54,7 @@ void decreaseScope();
     char val_char;
 }
 
-%type <val_string> type ident_decl identifier
+%type <val_string> type identifier
 %type <val_int> expression block
 
 %start program
@@ -67,7 +72,7 @@ void decreaseScope();
 %token T_PLUS T_MINUS T_ASTERISK T_SLASH T_PERCENT T_BACKSLASH 
 %token T_LESS T_LESS_EQ T_GREATER T_GREATER_EQ 
 %token T_ASSIGN T_EQUAL T_NOT_EQUAL 
-%token T_SEMICOLON T_COMMA T_DOT T_LPAREN T_RPAREN 
+%token T_SEMICOLON T_COMMA T_DOT T_LPAREN T_RPAREN T_OPEN_BRACE T_CLOSE_BRACE T_POWER
 %token T_ERROR T_UNKNOWN 
 
 %left T_PLUS T_MINUS
@@ -79,6 +84,7 @@ void decreaseScope();
 %nonassoc T_ASSIGN
 
 %right T_NOT
+%right T_POWER
 
 %%
 
@@ -95,10 +101,27 @@ declarations:
 ;
 
 declaration:
-    type ident_decl {
-        insertSymbol($2, $1, currentScope);
+    type identifier {
+        insertSymbol($2, $1, currentScope, NULL); 
+          if (strcmp($1, "int") == 0) {
+            countInt++;
+        }
     }
-    ;
+    | type identifier T_ASSIGN expression {
+        if (strcmp($1, "int") == 0) {
+
+            insertSymbol($2, $1, currentScope, &($4)); 
+            countInt++;
+        } else if (strcmp($1, "double") == 0) {
+            insertSymbol($2, $1, currentScope, &($4)); 
+        } else if (strcmp($1, "bool") == 0) {
+            insertSymbol($2, $1, currentScope, &($4)); 
+        } else {
+            insertSymbol($2, $1, currentScope, NULL); 
+        }
+    }
+;
+
 
 type:
     T_INT { $$ = strdup("int"); }
@@ -107,15 +130,6 @@ type:
     | T_STRING { $$ = strdup("string"); }
 ;
 
-ident_decl:
-    identifier
-    | identifier T_ASSIGN expression {
-        Symbol *symbol = findSymbol($1, currentScope);
-        if (symbol != NULL) {
-            updateSymbolValue(symbol->name, symbol->scope, &$3);
-        }
-    }
-    ;
 
 identifier:
     T_IDENTIFIER { $$ = strdup($1); }
@@ -141,7 +155,7 @@ command:
     }
     | T_IF expression T_THEN { increaseScope(); } block { decreaseScope(); } T_ELSE { increaseScope(); } block { decreaseScope(); } T_FI T_SEMICOLON
     | T_WHILE expression T_DO block T_END T_SEMICOLON
-    | T_FOR identifier
+    | T_FOR expression
     | T_READ identifier T_SEMICOLON
     | T_WRITE expression T_SEMICOLON
     | T_STRING_LITERAL T_SEMICOLON
@@ -164,6 +178,7 @@ expression:
     | T_NOT expression                                 { $$ = !$2; }
     | expression T_AND expression                      { $$ = $1 && $3; }
     | T_LPAREN expression T_RPAREN                     { $$ = $2; }
+    | expression T_POWER expression                     { $$ = pow($1, $3); }
     | T_DECIMAL_LITERAL                                { $$ = $1; } 
     | T_HEXADECIMAL_LITERAL                            { $$ = $1; } 
     | T_DOUBLE_LITERAL                                 { $$ = $1; }
@@ -184,12 +199,22 @@ void decreaseScope() {
 
 int main() {
     if (yyparse() == 0) {
-        printf("The program has successfully completed its work!\n");
+        printf("Parsing completed successfully\n");
+
+        printSymbolTable();
+
+        Symbol *maxInt = findMaxInt();
+        if (maxInt != NULL) {
+            printf("Najveci int je '%s' with value %d\n", maxInt->name, maxInt->value.intValue);
+        } else {
+            printf("Nije pronadjen!.\n");
+        }
     } else {
         printf("The program failed!\n");
     }
     return 0;
 }
+
 
 void yyerror(const char* msg) {
     fprintf(stderr, "The error is at position (%d, %d), please check. -> %s\n", yylloc.first_line, yylloc.first_column, msg);
@@ -204,12 +229,24 @@ Symbol *createSymbol(char *name, char *type, int scope) {
     return newSymbol;
 }
 
-void insertSymbol(char *name, char *type, int scope) {
+void insertSymbol(char *name, char *type, int scope, void *value) {
     Symbol *newSymbol = createSymbol(name, type, scope);
+
+    if (value != NULL) {
+        if (strcmp(type, "int") == 0) {
+            newSymbol->value.intValue = *(int *)value;
+        } else if (strcmp(type, "double") == 0) {
+            newSymbol->value.doubleValue = *(double *)value;
+        } else if (strcmp(type, "bool") == 0) {
+            newSymbol->value.boolValue = *(bool *)value;
+        }
+    }
+
     newSymbol->next = symbolTable;
     symbolTable = newSymbol;
     printf("Inserted symbol: %s, type: %s, scope: %d\n", name, type, scope);
 }
+
 
 Symbol *findSymbol(char *name, int scope) {
     Symbol *current = symbolTable;
@@ -254,5 +291,24 @@ void printSymbolTable() {
         }
         printf("\n");
         current = current->next;
-    }
+    }  
 }
+
+Symbol *findMaxInt() {
+    Symbol *current = symbolTable;
+    Symbol *maxInt = NULL;
+    int maxValue = INT_MIN;
+
+    while (current != NULL) {
+        if (strcmp(current->type, "int") == 0) {
+            if (current->value.intValue > maxValue) {
+                maxValue = current->value.intValue;
+                maxInt = current;
+            }
+        }
+        current = current->next;
+    }
+    return maxInt;
+}
+
+

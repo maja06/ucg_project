@@ -11,6 +11,7 @@ int yycolumn = 1;
 #define YY_USER_ACTION yylloc.first_line = yylloc.last_line = yylineno; \
     yylloc.first_column = yycolumn; yylloc.last_column = yycolumn + yyleng - 1; \
     yycolumn += yyleng;
+
 %}
 
 %option noyywrap
@@ -94,6 +95,9 @@ int yycolumn = 1;
 "."         { printf("TOKEN: T_DOT\n"); return T_DOT; }
 "("         { printf("TOKEN: T_LPAREN\n"); return T_LPAREN; }
 ")"         { printf("TOKEN: T_RPAREN\n"); return T_RPAREN; }
+"{"         { printf("Token: T_OPEN_BRACE\n"); return T_OPEN_BRACE; }
+"}"         { printf("Token: T_CLOSE_BRACE\n"); return T_CLOSE_BRACE; }
+"^"         { printf("Token: T_POWER\n"); return T_POWER;}
 
 [a-zA-Z][a-zA-Z0-9_]{31,} {
     fprintf(stderr, "Error: Identifikator je predug: %s\n", yytext);

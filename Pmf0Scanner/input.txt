@@ -2,10 +2,12 @@ let
     int x;
     int y;
     bool z;
+    int b;
 in
     x = 5;
     y = 10;
     z = true;
+    b = 50;
 
     if (x < 10) then
        int c;
